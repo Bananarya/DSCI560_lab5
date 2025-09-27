@@ -10,6 +10,7 @@ import logging
 import hashlib
 from collections import Counter
 import string
+from cluster import *
 
 # Optional: For OCR functionality (uncomment if you want to use)
 # import pytesseract
@@ -213,7 +214,7 @@ class EnhancedRedditScraper:
         
         title_lower = (post_data.get('title', '') or '').lower()
         content_lower = (post_data.get('content', '') or '').lower()
-        
+
         for indicator in promoted_indicators:
             if indicator in title_lower or indicator in content_lower:
                 return True
@@ -514,13 +515,13 @@ def main():
     # Database configuration
     db_config = {
         'host': 'localhost',
-        'user': 'root',  # Replace with your MySQL username
-        'password': 'Jia65322383!',  # Replace with your MySQL password
+        'user': 'pmaadmin',  # Replace with your MySQL username
+        'password': '20020718',  # Replace with your MySQL password
         'database': 'reddit_data'
     }
     
     # Reddit URL to scrape
-    reddit_url = 'https://www.reddit.com/r/tech/'
+    reddit_url = 'https://www.reddit.com/r/tech/new'
     
     # Get number of posts from user input
     try:
@@ -537,10 +538,9 @@ def main():
     
     # Run the scraper
     posts = scraper.scrape(num_posts)
-    
     # Display summary
     scraper.display_summary(posts)
-
+    cluster_and_visualization(db_config)
 
 if __name__ == "__main__":
     main()
