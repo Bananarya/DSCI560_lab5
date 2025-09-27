@@ -515,8 +515,8 @@ def main():
     # Database configuration
     db_config = {
         'host': 'localhost',
-        'user': 'pmaadmin',  # Replace with your MySQL username
-        'password': '20020718',  # Replace with your MySQL password
+        'user': 'root',  # Replace with your MySQL username
+        'password': '1234',  # Replace with your MySQL password
         'database': 'reddit_data'
     }
     
